@@ -1,50 +1,87 @@
-#mainBox {
-    margin: 0 0;
-    padding: 0 0;
-    background-color: rgb(0, 3, 19);
+td{text-align: center;}
+
+#navbar {
+    background-color: rgb(0, 3, 10);
+    width: 100%;
+    border-bottom: 1px solid rgb(28, 46, 73);
     display: flex;
+    position: fixed;
+    top: 0%;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: row;
+    margin-bottom: 20px;
+    padding: 30px;
 }
 
 #h1 {
     color: rgb(192, 212, 255);
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 40px;
+    font-size: 25px;
+    margin: 0;
     font-weight: bolder;
+}
+
+#container1 {
+    display: flex;
+    margin-top: 150px;
+    width: 100%;
+    border: 0px solid green;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+
+#mainBox {
+    margin: 0 0;
+    padding: 0 0;
+    /* background-color: rgb(65, 65, 65); */
+    display: flex;
+    width: 70%;
+    border: 0px solid red;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 
 #frame {
     border-radius: 5px;
     box-shadow: 10px 10px 30px rgb(0, 0, 0);
-    width: 50%;
+    width: 70%;
 }
 
-#typeBox{
+#typeBox {
     display: flex;
     flex-direction: row;
     width: 50%;
-    border:0px solid red;
+    border: 0px solid red;
     align-items: center;
     justify-content: center;
 }
 
 #submit {
     height: 50px;
-    background-color: rgb(0, 3, 19);
+    background-color: rgb(76, 84, 134);
     padding: 0 25px;
-    border: 2px solid rgb(150, 150, 150);
+    border: 2px solid rgb(0, 0, 0);
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
     margin: 15px;
     font-weight: bolder;
-    color: rgb(162, 176, 255);
+    border-radius: 2px;
+    transition-duration: 0.3s;
+    color: rgb(255, 255, 255);
+}
+
+#submit:hover {
+    background-color: rgb(0, 3, 19);
+    border: 2px solid rgb(145, 162, 255);
+    color: rgb(198, 204, 255);
 }
 
 #movieText {
     height: 50px;
+    border-radius: 2px;
     background-color: rgb(0, 3, 19);
     padding: 0px 25px;
     border: 2px solid rgb(117, 117, 117);
@@ -56,13 +93,63 @@
 
 
 #next {
-    height: 40px;
+    height: 35px;
     background-color: rgb(145, 162, 255);
     padding: 0 25px;
-    border: 2px solid rgb(150, 150, 150);
+    border: 0px solid rgb(145, 162, 255);
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
+    border-radius: 2px;
     margin: 15px;
+    transition-duration: 0.3s;
     font-weight: bolder;
     color: rgb(0, 0, 0);
+}
+
+#next:hover {
+    background-color: rgb(0, 3, 19);
+    border: 2px solid rgb(145, 162, 255);
+    color: rgb(198, 204, 255);
+}
+
+#statisticsTable {
+    background-color: black;
+    width: 20%;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+#tableHead {
+    color: white;
+    font-family: monospace;
+    font-weight: bolder;
+    font-size: 25px;
+}
+
+#smallBox1, #smallBox2 {
+    display: flex;
+    flex-direction: row;
+}
+
+#text1 {
+    color: white;
+    font-family: monospace;
+    font-weight: bolder;
+    margin: 15px;
+    font-size: 15px;
+}
+
+#text2 {
+    color: white;
+    font-family: monospace;
+    background-color: rgb(56, 56, 56);
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bolder;
+    margin: 15px;
+    font-size: 15px;
 }
