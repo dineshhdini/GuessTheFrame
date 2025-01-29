@@ -52,6 +52,8 @@ td{text-align: center;}
 
 #typeBox {
     display: flex;
+    position: fixed;
+    bottom: 20%;
     flex-direction: row;
     width: 50%;
     border: 0px solid red;
@@ -101,6 +103,8 @@ td{text-align: center;}
     font-size: 20px;
     border-radius: 2px;
     margin: 15px;
+    position: fixed;
+    bottom: 13%;
     transition-duration: 0.3s;
     font-weight: bolder;
     color: rgb(0, 0, 0);

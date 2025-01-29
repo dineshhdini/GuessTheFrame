@@ -41,7 +41,7 @@ const Home = () => {
   const submitMovie = () => {
 
 
-    const number = Math.floor(Math.random() * (2 - 0 + 1));
+    const number = Math.floor(Math.random() * (11 - 0 + 1));
 
     console.log("Next Movie id : "+number)
     console.log(movieData)
