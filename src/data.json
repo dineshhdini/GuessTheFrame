@@ -1,0 +1,12 @@
+[
+    {
+        "id": 1,
+        "path": "./frames/1.png",
+        "name": "interstellar"
+    },
+    {
+        "id": 2,
+        "path": "./frames/2.png",
+        "name": "inception"
+    }
+]

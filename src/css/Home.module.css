@@ -1,0 +1,68 @@
+#mainBox {
+    margin: 0 0;
+    padding: 0 0;
+    background-color: rgb(0, 3, 19);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#h1 {
+    color: rgb(192, 212, 255);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 40px;
+    font-weight: bolder;
+}
+
+
+#frame {
+    border-radius: 5px;
+    box-shadow: 10px 10px 30px rgb(0, 0, 0);
+    width: 50%;
+}
+
+#typeBox{
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    border:0px solid red;
+    align-items: center;
+    justify-content: center;
+}
+
+#submit {
+    height: 50px;
+    background-color: rgb(0, 3, 19);
+    padding: 0 25px;
+    border: 2px solid rgb(150, 150, 150);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    margin: 15px;
+    font-weight: bolder;
+    color: rgb(162, 176, 255);
+}
+
+#movieText {
+    height: 50px;
+    background-color: rgb(0, 3, 19);
+    padding: 0px 25px;
+    border: 2px solid rgb(117, 117, 117);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: bolder;
+    color: rgb(162, 176, 255);
+}
+
+
+#next {
+    height: 40px;
+    background-color: rgb(145, 162, 255);
+    padding: 0 25px;
+    border: 2px solid rgb(150, 150, 150);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    margin: 15px;
+    font-weight: bolder;
+    color: rgb(0, 0, 0);
+}
