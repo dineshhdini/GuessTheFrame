@@ -8,5 +8,10 @@
         "id": 2,
         "path": "./frames/2.png",
         "name": "inception"
+    },
+    {
+        "id": 3,
+        "path": "./frames/3.png",
+        "name": "avatar"
     }
 ]
