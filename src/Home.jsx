@@ -14,7 +14,7 @@ const Home = () => {
   // matching movie names object
   const [matchigMovies, setMatchingMovies] = useState({});
   // current frame movie name
-  const [currMovie, setCurrMovie] = useState("-");
+  const [currMovie, setCurrMovie] = useState("avatar");
 
   // fetches the movies data from the text file afr loading the wap page
   useEffect(() => {
@@ -114,7 +114,7 @@ const Home = () => {
 
 
       <div id={styles.navbar}>
-        <p id={styles.h1}>GuessTheFrame.com {currMovie}</p>
+        <p id={styles.h1}>GuessTheFrame.com</p>
       </div>
 
 
