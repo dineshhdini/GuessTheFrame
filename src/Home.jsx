@@ -9,16 +9,28 @@ import styles from './css/Home.module.css'
 const Home = () => {
 
 
+  // vaariables
+
   // json data storing object
   const [movieData, setMovieData] = useState(null);
   // matching movie names object
   const [matchigMovies, setMatchingMovies] = useState({});
   // current frame movie name
   const [currMovie, setCurrMovie] = useState("avatar");
+  // img path variable
+  const [framePath, setFramePath] = useState('./frames/1.png');
+  // movie name text
+  const [movieText, setMovieText] = useState("");
+  // current streak object
+  const [streak, setStreak] = useState(0);
+  // highest streak objcet
+  const [highestStreak, setHighestStreak] = useState(0);
+  // borserColor
+  const [borderColor, setBorderColor]= useState("none");
+
 
   // fetches the movies data from the text file afr loading the wap page
   useEffect(() => {
-
     fetch('./data.json')
       .then((response) => response.json())
       .then((data) => setMovieData(data));
@@ -29,10 +41,7 @@ const Home = () => {
 
 
 
-  // img path variable
-  const [framePath, setFramePath] = useState('./frames/1.png');
-  // movie name text
-  const [movieText, setMovieText] = useState("");
+
 
 
 
@@ -40,13 +49,26 @@ const Home = () => {
   // on submitting the movie name
   const submitMovie = (e) => {
     e.preventDefault();
-    if(movieText){
-      console.log("suibmitted movie : "+movieText)
+    if (movieText) {
+      console.log("suibmitted movie : " + movieText)
     }
-    if(currMovie == movieText){
-      alert("youre right nigga!!");
-    }else{
-      alert("youre wrong nigga!!")
+    if (currMovie == movieText) {
+      // alert("youre right nigga!!");
+      setStreak(streak + 1);
+      // setHighestStreak(highestStreak+1)
+      setBorderColor("4px solid rgb(93, 185, 81)")
+    
+      if (highestStreak < streak) {
+        console.log("straek :"+streak);
+        console.log("high streak : "+highestStreak);
+        // highestStreak = streak;
+        setHighestStreak(streak);
+      }
+
+    } else {
+      // alert("youre wrong nigga!!")
+      setStreak(0)
+      setBorderColor("4px solid red")
     }
   }
 
@@ -63,11 +85,12 @@ const Home = () => {
       setCurrMovie(generatedMovie)
       setFramePath(`./frames/${number + 1}.png`)
       setMovieText('')
+      setBorderColor("none")
       console.log("Next Movie id : " + Number(number + 1))
-      if(currMovie){
+      if (currMovie) {
         console.log(currMovie)
       }
-      
+
     } else {
       console.error("Movie not found for id:", number + 1);
     }
@@ -93,7 +116,7 @@ const Home = () => {
           (movie) => movie.name.toLowerCase().includes(text.toLowerCase())
         )
       )
-      console.log(matchigMovies)
+      // console.log(matchigMovies)
     };
   }
 
@@ -127,7 +150,7 @@ const Home = () => {
 
 
         <div id={styles.mainBox}>
-          <img id={styles.frame} src={framePath} />
+          <img  style={{border:borderColor}} id={styles.frame} src={framePath} />
           <div id={styles.typeBox}>
             <form onSubmit={submitMovie}>
               <input placeholder='enter movie title here' id={styles.movieText} type='text' value={movieText} onChange={findMatchMovie} required />
@@ -166,7 +189,7 @@ const Home = () => {
             <thead>
               <tr>
                 <td>
-                  <p id={styles.text2}>0</p>
+                  <p id={styles.text2}>{streak}</p>
                 </td>
                 <td>
                   <p id={styles.text2}>- %</p>
@@ -186,7 +209,7 @@ const Home = () => {
             <thead>
               <tr>
                 <td>
-                  <p id={styles.text2}>0</p>
+                  <p id={styles.text2}>{highestStreak}</p>
                 </td>
                 <td>
                   <p id={styles.text2}>0</p>
