@@ -2,16 +2,71 @@
     {
         "id": 1,
         "path": "./frames/1.png",
-        "name": "interstellar"
+        "name": "avatar"
     },
     {
         "id": 2,
         "path": "./frames/2.png",
-        "name": "inception"
+        "name": "interstellar"
     },
     {
         "id": 3,
         "path": "./frames/3.png",
-        "name": "avatar"
+        "name": "spider-man"
+    },
+    {
+        "id": 4,
+        "path": "./frames/4.png",
+        "name": "dune"
+    },
+    {
+        "id": 5,
+        "path": "./frames/5.png",
+        "name": "iron-man 2"
+    },
+    {
+        "id": 6,
+        "path": "./frames/6.png",
+        "name": "sully"
+    },
+    {
+        "id": 7,
+        "path": "./frames/7.png",
+        "name": "interstellar"
+    },
+    {
+        "id": 8,
+        "path": "./frames/8.png",
+        "name": "inception"
+    },
+    {
+        "id": 9,
+        "path": "./frames/9.png",
+        "name": "forrest gump"
+    },
+    {
+        "id": 10,
+        "path": "./frames/10.png",
+        "name": "the terminal"
+    },
+    {
+        "id": 11,
+        "path": "./frames/11.png",
+        "name": "titanic"
+    },
+    {
+        "id": 12,
+        "path": "./frames/12.png",
+        "name": "the revenent"
+    },
+    {
+        "id": 13,
+        "path": "./frames/13.png",
+        "name": "the hangover"
+    },
+    {
+        "id": 14,
+        "path": "./frames/14.png",
+        "name": "edge of tommorow"
     }
 ]

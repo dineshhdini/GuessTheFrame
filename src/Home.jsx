@@ -12,11 +12,13 @@ const Home = () => {
   // json data storing object
   const [movieData, setMovieData] = useState(null);
   // matching movie names object
-  const [matchigMovies, setMatchingMovies]=useState({});
+  const [matchigMovies, setMatchingMovies] = useState({});
+  // current frame movie name
+  const [currMovie, setCurrMovie] = useState("-");
 
   // fetches the movies data from the text file afr loading the wap page
   useEffect(() => {
-    
+
     fetch('./data.json')
       .then((response) => response.json())
       .then((data) => setMovieData(data));
@@ -35,20 +37,41 @@ const Home = () => {
 
 
 
-
-
-
-
   // on submitting the movie name
   const submitMovie = (e) => {
     e.preventDefault();
+    if(movieText){
+      console.log("suibmitted movie : "+movieText)
+    }
+    if(currMovie == movieText){
+      alert("youre right nigga!!");
+    }else{
+      alert("youre wrong nigga!!")
+    }
+  }
 
-    const number = Math.floor(Math.random() * (11 - 0 + 1));
 
-    console.log("Next Movie id : " + number)
-    console.log(movieData)
-    setFramePath(`./frames/${number + 1}.png`)
-    setMovieText('')
+
+
+
+  // generating next movie object
+  const nextMovie = (e) => {
+    e.preventDefault();
+    const number = Math.floor(Math.random() * (13 - 0 + 1));
+    const generatedMovie = movieData.find(movie => movie.id === Number(number + 1)).name;
+    if (generatedMovie) {
+      setCurrMovie(generatedMovie)
+      setFramePath(`./frames/${number + 1}.png`)
+      setMovieText('')
+      console.log("Next Movie id : " + Number(number + 1))
+      if(currMovie){
+        console.log(currMovie)
+      }
+      
+    } else {
+      console.error("Movie not found for id:", number + 1);
+    }
+
 
   }
 
@@ -58,25 +81,21 @@ const Home = () => {
 
 
 
-
-const findMatchMovie = (e) => {
-  const text = e.target.value;
-  setMovieText(text)
-  if(text.trim()==""){
-    setMatchingMovies([]);
-  }else{
-    setMatchingMovies(
-      movieData.filter(
-        (movie)=>movie.name.toLowerCase().includes(text.toLowerCase())
+  // find the matching movies names from the user input
+  const findMatchMovie = (e) => {
+    const text = e.target.value;
+    setMovieText(text)
+    if (text.trim() == "") {
+      setMatchingMovies([]);
+    } else {
+      setMatchingMovies(
+        movieData.filter(
+          (movie) => movie.name.toLowerCase().includes(text.toLowerCase())
+        )
       )
-    )
-    console.log(matchigMovies)
-  };
-  // console.log("called");
-  // const movies = movieData[0].name;
-  // console.log(movies)
-  // movieData.map((movie)=>{console.log(movie.name)})
-}
+      console.log(matchigMovies)
+    };
+  }
 
 
 
@@ -95,7 +114,7 @@ const findMatchMovie = (e) => {
 
 
       <div id={styles.navbar}>
-        <p id={styles.h1}>GuessTheFrame.com</p>
+        <p id={styles.h1}>GuessTheFrame.com {currMovie}</p>
       </div>
 
 
@@ -114,18 +133,18 @@ const findMatchMovie = (e) => {
               <input placeholder='enter movie title here' id={styles.movieText} type='text' value={movieText} onChange={findMatchMovie} required />
               {matchigMovies.length > 0 && (
                 <ul id={styles.movieList}>
-                  {matchigMovies.map((movie)=>(
-                    
-                    <li key={movie.id} id={styles.movies} onClick={()=>{setMovieText(movie.name);setMatchingMovies([]);}}>
+                  {matchigMovies.map((movie) => (
+
+                    <li key={movie.id} id={styles.movies} onClick={() => { setMovieText(movie.name); setMatchingMovies([]); }}>
                       {movie.name}
                     </li>
                   ))}
                 </ul>
               )}
-              <input type='submit' id={styles.submit}  value="submit" />
+              <input type='submit' id={styles.submit} value="submit" />
             </form>
           </div>
-          <button id={styles.next} onClick={submitMovie}>Next</button>
+          <button id={styles.next} onClick={nextMovie}>Next</button>
         </div>
 
 
