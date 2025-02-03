@@ -25,8 +25,15 @@ const Home = () => {
   const [streak, setStreak] = useState(0);
   // highest streak objcet
   const [highestStreak, setHighestStreak] = useState(0);
+  // win rater% object
+  const [winRate, setWinRate] = useState(1);
   // borserColor
-  const [borderColor, setBorderColor]= useState("none");
+  const [borderColor, setBorderColor] = useState("none");
+
+
+
+
+
 
 
   // fetches the movies data from the text file afr loading the wap page
@@ -53,20 +60,27 @@ const Home = () => {
       console.log("suibmitted movie : " + movieText)
     }
     if (currMovie == movieText) {
-      // alert("youre right nigga!!");
-      setStreak(streak + 1);
-      // setHighestStreak(highestStreak+1)
+      const newStreak = streak + 1;
+      setStreak(newStreak);
+      winRate=winRate
       setBorderColor("4px solid rgb(93, 185, 81)")
-    
-      if (highestStreak < streak) {
-        console.log("straek :"+streak);
-        console.log("high streak : "+highestStreak);
-        // highestStreak = streak;
-        setHighestStreak(streak);
+      console.log("high : ", highestStreak)
+      console.log("strewak : ", streak)
+      if (highestStreak < newStreak) {
+        if (highestStreak > newStreak) {
+          setHighestStreak(highestStreak)
+          console.log("first")
+        } else {
+          setHighestStreak(newStreak)
+          console.log("second")
+        }
       }
+      //       setTimeout(()=>{
+      // nextMovie();
+      //       },500);
+      //       nextMovie();
 
     } else {
-      // alert("youre wrong nigga!!")
       setStreak(0)
       setBorderColor("4px solid red")
     }
@@ -150,7 +164,7 @@ const Home = () => {
 
 
         <div id={styles.mainBox}>
-          <img  style={{border:borderColor}} id={styles.frame} src={framePath} />
+          <img style={{ border: borderColor }} id={styles.frame} src={framePath} />
           <div id={styles.typeBox}>
             <form onSubmit={submitMovie}>
               <input placeholder='enter movie title here' id={styles.movieText} type='text' value={movieText} onChange={findMatchMovie} required />
@@ -192,7 +206,7 @@ const Home = () => {
                   <p id={styles.text2}>{streak}</p>
                 </td>
                 <td>
-                  <p id={styles.text2}>- %</p>
+                  <p id={styles.text2}>{winRate}%</p>
                 </td>
               </tr>
             </thead>
