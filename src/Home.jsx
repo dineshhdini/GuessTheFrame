@@ -26,7 +26,7 @@ const Home = () => {
   // highest streak objcet
   const [highestStreak, setHighestStreak] = useState(0);
   // win rate calculation objects
-  const [totalTrue, setTotalTrue]=useState(0);
+  const [totalTrue, setTotalTrue] = useState(0);
   const [totalTry, setTotalTry] = useState(0);
   const [winRate, setWinRate] = useState(0);
   // borserColor
@@ -36,7 +36,7 @@ const Home = () => {
 
 
 
-  
+
 
   // fetches the movies data from the text file afr loading the wap page
   useEffect(() => {
@@ -58,7 +58,7 @@ const Home = () => {
   // on submitting the movie name
   const submitMovie = (e) => {
     e.preventDefault();
-    const newTotalTry = totalTry+1;
+    const newTotalTry = totalTry + 1;
     setTotalTry(newTotalTry);
     if (currMovie == movieText) {
       const newStreak = streak + 1;
@@ -71,18 +71,18 @@ const Home = () => {
           setHighestStreak(newStreak)
         }
       }
-      const newTotalTrue=totalTrue+1;
-      setTotalTrue(totalTrue+1);
-      const newWinRate = (newTotalTrue/newTotalTry)*100;
+      const newTotalTrue = totalTrue + 1;
+      setTotalTrue(totalTrue + 1);
+      const newWinRate = (newTotalTrue / newTotalTry) * 100;
       setWinRate(newWinRate);
     } else {
       setStreak(0)
       setBorderColor("4px solid red")
-      const newWinRate = (totalTrue/newTotalTry)*100;
+      const newWinRate = (totalTrue / newTotalTry) * 100;
       setWinRate(newWinRate);
     }
-    console.log("true : ",totalTrue);
-    console.log("try : ",totalTry);
+    console.log("true : ", totalTrue);
+    console.log("try : ", totalTry);
   }
 
 
@@ -150,7 +150,9 @@ const Home = () => {
 
 
       <div id={styles.navbar}>
-        <p id={styles.h1}>GuessTheFrame {totalTrue} {totalTry}</p>
+        <ion-icon id={styles.menu} name="menu"></ion-icon>
+        <p id={styles.h1}>GuessTheFrame</p>
+        <ion-icon id={styles.menu} name="person-outline"></ion-icon>
       </div>
 
 
@@ -205,7 +207,7 @@ const Home = () => {
                   <p id={styles.text2}>{streak}</p>
                 </td>
                 <td>
-                  <p id={styles.text2}>{(winRate!=0.0)?winRate.toFixed(2):"0"}%</p>
+                  <p id={styles.text2}>{(winRate != 0.0) ? winRate.toFixed(2) : "0"}%</p>
                 </td>
               </tr>
             </thead>
