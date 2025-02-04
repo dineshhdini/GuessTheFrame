@@ -31,6 +31,11 @@ const Home = () => {
   const [winRate, setWinRate] = useState(0);
   // borserColor
   const [borderColor, setBorderColor] = useState("none");
+  // attempts varable object
+  const [attempts, setAttempts] = useState(0);
+  // result msg
+  const [result, setResult] = useState("");
+  const [resultColor, setResultColor] = useState("rgb(93, 185, 81)");
 
 
 
@@ -40,6 +45,7 @@ const Home = () => {
 
   // fetches the movies data from the text file afr loading the wap page
   useEffect(() => {
+    console.log("loaded");
     fetch('./data.json')
       .then((response) => response.json())
       .then((data) => setMovieData(data));
@@ -60,9 +66,17 @@ const Home = () => {
     e.preventDefault();
     const newTotalTry = totalTry + 1;
     setTotalTry(newTotalTry);
+    if (attempts < 4) {
+      setAttempts(attempts + 1);
+    }
+    if (attempts == 4) {
+      return 0;
+    }
     if (currMovie == movieText) {
       const newStreak = streak + 1;
       setStreak(newStreak);
+      setResult("You're right!")
+      setResultColor("rgb(93, 185, 81)")
       setBorderColor("4px solid rgb(93, 185, 81)")
       if (highestStreak < newStreak) {
         if (highestStreak > newStreak) {
@@ -77,12 +91,14 @@ const Home = () => {
       setWinRate(newWinRate);
     } else {
       setStreak(0)
+      setResult("You're wrong!")
+      setResultColor("red")
       setBorderColor("4px solid red")
       const newWinRate = (totalTrue / newTotalTry) * 100;
       setWinRate(newWinRate);
     }
-    console.log("true : ", totalTrue);
-    console.log("try : ", totalTry);
+    // console.log("true : ", totalTrue);
+    // console.log("try : ", totalTry);
   }
 
 
@@ -92,16 +108,20 @@ const Home = () => {
   // generating next movie object
   const nextMovie = (e) => {
     e.preventDefault();
+    if (attempts != 4) {
+      return 0;
+    }
     const number = Math.floor(Math.random() * (13 - 0 + 1));
     const generatedMovie = movieData.find(movie => movie.id === Number(number + 1)).name;
     if (generatedMovie) {
       setCurrMovie(generatedMovie)
       setFramePath(`./frames/${number + 1}.png`)
       setMovieText('')
+      setAttempts(0)
       setBorderColor("none")
-      console.log("Next Movie id : " + Number(number + 1))
+      // console.log("Next Movie id : " + Number(number + 1))
       if (currMovie) {
-        console.log(currMovie)
+        // console.log(currMovie)
       }
 
     } else {
@@ -180,6 +200,10 @@ const Home = () => {
                 </ul>
               )}
               <input type='submit' id={styles.submit} value="submit" />
+              <div style={{ display: "flex", flexDirection: "row" }}>
+                <p id={styles.attempts}>{attempts}/4 Attempts</p>
+                <p id={styles.result} style={{ color: resultColor }}>{result}</p>
+              </div>
             </form>
           </div>
           <button id={styles.next} onClick={nextMovie}>Next</button>

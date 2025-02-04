@@ -11,6 +11,7 @@ td {
     top: 0%;
     align-items: center;
     justify-content: center;
+    /* border: 1px solid red; */
     flex-direction: row;
     margin-bottom: 20px;
     padding: 30px 0;
@@ -74,8 +75,8 @@ td {
     position: fixed;
     bottom: 15%;
     flex-direction: row;
-    width: 40%;
-    /* border: 1px solid red; */
+    width: 50%;
+    /* border: 1px solid blue; */
     align-items: center;
     justify-content: center;
 }
@@ -112,6 +113,20 @@ td {
     color: rgb(162, 176, 255);
 }
 
+#attempts {
+    color: rgb(125, 130, 175);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#result {
+    color: rgb(147, 226, 158);
+    margin-left: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+}
 
 #next {
     height: 35px;
