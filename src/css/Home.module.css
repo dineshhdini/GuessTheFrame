@@ -66,7 +66,7 @@ td {
 
 #submit {
     height: 40px;
-    background-color: rgb(76, 84, 134);
+    background-color: rgb(145, 162, 255);
     padding: 0 25px;
     border: 2px solid rgb(0, 0, 0);
     font-family: Arial, Helvetica, sans-serif;
@@ -75,7 +75,7 @@ td {
     font-weight: bolder;
     border-radius: 2px;
     transition-duration: 0.3s;
-    color: rgb(255, 255, 255);
+    color: black;
 }
 
 #submit:hover {

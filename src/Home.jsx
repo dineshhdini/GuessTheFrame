@@ -26,7 +26,7 @@ const Home = () => {
   // highest streak objcet
   const [highestStreak, setHighestStreak] = useState(0);
   // win rater% object
-  const [winRate, setWinRate] = useState(1);
+  const [winRate, setWinRate] = useState(0);
   // borserColor
   const [borderColor, setBorderColor] = useState("none");
 
@@ -34,7 +34,7 @@ const Home = () => {
 
 
 
-
+  
 
   // fetches the movies data from the text file afr loading the wap page
   useEffect(() => {
@@ -62,7 +62,6 @@ const Home = () => {
     if (currMovie == movieText) {
       const newStreak = streak + 1;
       setStreak(newStreak);
-      winRate=winRate
       setBorderColor("4px solid rgb(93, 185, 81)")
       console.log("high : ", highestStreak)
       console.log("strewak : ", streak)
