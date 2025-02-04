@@ -25,7 +25,9 @@ const Home = () => {
   const [streak, setStreak] = useState(0);
   // highest streak objcet
   const [highestStreak, setHighestStreak] = useState(0);
-  // win rater% object
+  // win rate calculation objects
+  const [totalTrue, setTotalTrue]=useState(0);
+  const [totalTry, setTotalTry] = useState(0);
   const [winRate, setWinRate] = useState(0);
   // borserColor
   const [borderColor, setBorderColor] = useState("none");
@@ -56,33 +58,31 @@ const Home = () => {
   // on submitting the movie name
   const submitMovie = (e) => {
     e.preventDefault();
-    if (movieText) {
-      console.log("suibmitted movie : " + movieText)
-    }
+    const newTotalTry = totalTry+1;
+    setTotalTry(newTotalTry);
     if (currMovie == movieText) {
       const newStreak = streak + 1;
       setStreak(newStreak);
       setBorderColor("4px solid rgb(93, 185, 81)")
-      console.log("high : ", highestStreak)
-      console.log("strewak : ", streak)
       if (highestStreak < newStreak) {
         if (highestStreak > newStreak) {
           setHighestStreak(highestStreak)
-          console.log("first")
         } else {
           setHighestStreak(newStreak)
-          console.log("second")
         }
       }
-      //       setTimeout(()=>{
-      // nextMovie();
-      //       },500);
-      //       nextMovie();
-
+      const newTotalTrue=totalTrue+1;
+      setTotalTrue(totalTrue+1);
+      const newWinRate = (newTotalTrue/newTotalTry)*100;
+      setWinRate(newWinRate);
     } else {
       setStreak(0)
       setBorderColor("4px solid red")
+      const newWinRate = (totalTrue/newTotalTry)*100;
+      setWinRate(newWinRate);
     }
+    console.log("true : ",totalTrue);
+    console.log("try : ",totalTry);
   }
 
 
@@ -150,7 +150,7 @@ const Home = () => {
 
 
       <div id={styles.navbar}>
-        <p id={styles.h1}>GuessTheFrame.com</p>
+        <p id={styles.h1}>GuessTheFrame {totalTrue} {totalTry}</p>
       </div>
 
 
@@ -205,7 +205,7 @@ const Home = () => {
                   <p id={styles.text2}>{streak}</p>
                 </td>
                 <td>
-                  <p id={styles.text2}>{winRate}%</p>
+                  <p id={styles.text2}>{(winRate!=0.0)?winRate.toFixed(2):"0"}%</p>
                 </td>
               </tr>
             </thead>
